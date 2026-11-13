@@ -39,19 +39,21 @@
 
 9. Sur quels nœuds se trouvent vos 3 réplicas ? Collez la sortie de `kubectl get pods -l app=site -o wide`.
    ```
-
+NAME                    READY   STATUS    RESTARTS   AGE   IP          NODE              NOMINATED NODE   READINESS GATES
+site-6b84bdbc98-zkbjw   1/1     Running   0          10m   10.42.1.8   k3d-lab-agent-0   <none>     <none>
    ```
+
 10. Avec l'image `nginx:9.99`, quel statut avait le pod ? Quelle commande vous a donné la cause ?
-    >
+    >ImagePullBackOff. kubectl describe pod -l app=site
 11. Pendant la panne, le site restait-il accessible ? Pourquoi ?
-    >
+    > Oui, Kubernetes ne supprime les anciens pods fonctionnels qu'après que les nouveaux pods sont opérationnels
 
 ## Exercice 6 — Portainer & Mario
 
 12. URL publique de votre Mario :
-    >
+    > https://super-space-tribble-77rvgrj4r9whx6jx-8585.app.github.dev/
 13. Retrouvez le Deployment `mario` en ligne de commande. Portainer et `kubectl` parlent-ils au même composant ? Lequel ?
-    >
+    >Oui, Portainer et kubectl parlent exactement au même composant : l'API Server Kubernetes
 
 ## Bonus (facultatif)
 
