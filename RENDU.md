@@ -10,30 +10,30 @@
 ## Exercice 1 — Cluster
 
 1. Combien de nœuds affiche `kubectl get nodes` ? Quel est le rôle de chacun ?
-   >
+   >3 nœuds; 1 nœud control-plane, 2 nœuds workers
 2. Que montre `docker ps` ? Qu'est-ce qu'un « nœud » dans k3d, concrètement ?
-   >
+   > docker ps affiche les conteneurs Docker qui tournent dans le Codespace. C'est un conteneur Docker exécutant k3s.
 
 ## Exercice 2 — Premier déploiement
 
 3. Quels objets Kubernetes ont été créés par `kubectl create deployment` ? (indice : `kubectl get all`)
-   >
+   > un Deployment, qui a lui-même créé un ReplicaSet, qui a enfin créé un Pod
 4. Vous avez supprimé le pod `web-...` : que s'est-il passé, et pourquoi ?
-   >
+   > Le pod supprimé est passé en statut Terminating et un nouveau pod a été immédiatement créé et démarré.
 
 ## Exercice 3 — Modifier un conteneur en direct
 
 5. Après suppression du pod, votre message « Bienvenue... » a-t-il survécu ? Pourquoi ?
-   >
+   > Non, le message a disparu et la page par défaut Welcome to nginx! est revenue. Le système de fichiers d'un conteneur est éphémère.
 6. Pourquoi le `port-forward` a-t-il cessé de fonctionner après la suppression du pod ?
-   >
+   > Le tunnel réseau s'est rompu et le processus port-forward s'est arrêté.
 
 ## Exercice 4 — Déclaratif
 
 7. Quelle différence entre `kubectl create` et `kubectl apply` ?
-   >
+   > kubectl create est une commande impérative. kubectl apply est une commande déclarative
 8. À quoi sert le `selector` d'un Service ? Que se passe-t-il s'il ne correspond à aucun pod ?
-   >
+   > Le selector permet au Service de repérer dynamiquement les pods cibles vers lesquels il doit acheminer et répartir le trafic réseau
 
 ## Exercice 5 — Scaling & mises à jour
 
